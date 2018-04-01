@@ -65,6 +65,11 @@
     .select2 {
         width: 100%!important; /* overrides computed width, 100px in your demo */
     }
+    .dataTables_filter {
+        width: 50%;
+        float: right;
+        text-align: right;
+    }
 </style>
 <div class="modal fade" id="modal_generico" tabindex="-1"
 role="dialog" aria-hidden="true">
