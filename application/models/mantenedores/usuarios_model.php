@@ -9,9 +9,10 @@ class usuarios_model extends CI_Model
 {
     function obtener_usuarios()
     {
-        $this->db->select("*")
-            ->from('usuarios');
+        $this->db->select("u.id, u.usuario, u.nombre,u.estado, u.id_perfil perfil")
+            ->from('usuarios u');
         $query = $this->db->get();
+        //echo $this->db->last_query();
         return $query->result();
     }
 
