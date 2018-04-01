@@ -14,7 +14,7 @@
         <div class="clearfix"></div>
     </div>
     <div class="panel-body">
-        <table id="tabla_usuarios" class="table table-responsive table-bordered table-striped"">
+        <table id="tabla_usuarios" class="table table-responsive"">
         <thead>
         <tr>
             <th>ID</th>

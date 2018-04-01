@@ -9,7 +9,7 @@ class usuarios_model extends CI_Model
 {
     function obtener_usuarios()
     {
-        $this->db->select("u.id, u.usuario, u.nombre,CASE WHEN u.estado = 'S' THEN 'Activo' ELSE 'Inactivo' END estado, u.id_perfil perfil,p.descripcion perfil_d",false)
+        $this->db->select("u.id, u.usuario, u.nombre,CASE WHEN u.estado = 'S' THEN 'ACTIVO' ELSE 'INACTIVO' END estado, u.id_perfil perfil,p.descripcion perfil_d",false)
             ->from('usuarios u')->join("perfiles p",'p.id=u.id_perfil','inner');
         $query = $this->db->get();
         //echo $this->db->last_query();

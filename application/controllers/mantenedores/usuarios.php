@@ -30,12 +30,15 @@ class usuarios extends CI_Controller
         $data = $this->usuarios_model->obtener_usuarios();
         for ($i = 0; $i < count($data); $i++) {
             $str = '<button type="submit" data-id="' . $data[$i]->id . '" data-usuario="' . $data[$i]->usuario . '" data-nombres="' . $data[$i]->nombre . '" data-estado="' . $data[$i]->estado . '" data-perfil="' . $data[$i]->perfil . '" data-perfil-d="' . $data[$i]->perfil_d . '" class="btn btn-primary btn-xs btn_editar" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>';
-            if ($data[$i]->estado == 'Activo') {
+            if ($data[$i]->estado == 'ACTIVO') {
                 $str .= ' <button type="submit" data-id="' . $data[$i]->id . '" data-estado="' . $data[$i]->estado . '" class="btn btn-success btn-xs btn_estado" title="Cambiar Estado"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button>';
+                $data[$i]->estado = '<button type="button" class="btn btn-success">'.$data[$i]->estado.'</button>';
             } else {
                 $str .= ' <button type="submit" data-id="' . $data[$i]->id . '" data-estado="' . $data[$i]->estado . '" class="btn btn-danger btn-xs btn_estado" title="Cambiar Estado"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>';
+                $data[$i]->estado = '<button type="button" class="btn btn-danger">'.$data[$i]->estado.'</button>';
             }
             $data[$i]->acciones = $str;
+
         }
         $datos["data"] = $data;
         $this->output->set_content_type('application/json')->set_output(json_encode(array_utf8_encode($datos)));
@@ -108,10 +111,10 @@ class usuarios extends CI_Controller
                 $this->load->model('mantenedores/usuarios_model', 'usuarios_model');
                 $id = $this->input->post('id');
                 $perfil = $this->input->post('estado');
-                if ($perfil == 'Activo') {
+                if ($perfil == 'ACTIVO') {
                     $this->usuarios_model->cambia_estado_usuario($id, 'N');
                     $mensaje->respuesta = "S";
-                } elseif ($perfil == 'Inactivo') {
+                } elseif ($perfil == 'INACTIVO') {
                     $this->usuarios_model->cambia_estado_usuario($id, 'S');
                     $mensaje->respuesta = "S";
                 } else {

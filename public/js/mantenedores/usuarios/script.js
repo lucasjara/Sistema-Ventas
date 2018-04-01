@@ -23,7 +23,7 @@ $(document).ready(function () {
     $("#agregar_usuarios").on('click', function () {
         $("#modal_agregar").modal('show');
     });
-    $("#tabla_usuarios").on('click','> tbody > tr > td:nth-child(6) > btn_editar', function () {
+    $("#tabla_usuarios").on('click','> tbody > tr > td:nth-child(6) > .btn_editar', function () {
         //Limpieza alerta
         $("#modal_alerta_editar").html('');
         $("#modal_alerta_editar").removeClass('alert alert-danger');
